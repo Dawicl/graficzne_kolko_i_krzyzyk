@@ -1,0 +1,87 @@
+
+
+<main_window>
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        spacing: 5
+        padding: 5
+        Label:
+            text: "Gracz: O"
+            font_size: 38
+            size_hint: 1, 0.1
+            id: wyswietlacz
+
+        Label:
+            text: " "
+            font_size: 38
+            size_hint: 1, 0.1
+            id: temp_ekran
+        GridLayout:
+            cols: 3
+            spacing: 5
+            Button:
+                text: " "
+                on_press: root.ruch_gracza(pierwszy)
+                id: pierwszy
+                font_size: 50
+            Button:
+                text: " "
+                on_press: root.ruch_gracza(drugi)
+                id: drugi
+                font_size: 50
+            Button:
+                text: " "
+                on_press: root.ruch_gracza(trzeci)
+                id: trzeci
+                font_size: 50
+            Button:
+                text: " "
+                on_press: root.ruch_gracza(czwarty)
+                id: czwarty
+                font_size: 50
+            Button:
+                text: " "
+                on_press: root.ruch_gracza(piaty)
+                id: piaty
+                font_size: 50
+            Button:
+                text: " "
+                on_press: root.ruch_gracza(szosty)
+                id: szosty
+                font_size: 50
+            Button:
+                text: " "
+                on_press: root.ruch_gracza(siodmy)
+                id: siodmy
+                font_size: 50
+            Button:
+                text: " "
+                on_press: root.ruch_gracza(osmy)
+                id: osmy
+                font_size: 50
+            Button:
+                text: " "
+                on_press: root.ruch_gracza(dziewiaty)
+                id: dziewiaty
+                font_size: 50
+        FloatLayout:
+            size_hint: 1, 0.1
+            Button:
+                text: "Nowa gra"
+                on_press: root.reset()
+                id: reset
+                font_size: 20
+                size_hint: 0.5, 0.1
+                pos_hint: {"center_x": 0.5, "center_y": 0.55}
+            Label:
+                text: "Gracz: O - 0"
+                id: wynik_O
+                pos_hint: {"left": 1, "center_y": 0.52}
+                size_hint: 0.2, 0.1
+            Label:
+                text: "Gracz: X - 0"
+                id: wynik_X
+                pos_hint: {"right": 1, "center_y": 0.52}
+                size_hint: 0.2, 0.1
+        
