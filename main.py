@@ -28,62 +28,52 @@ class main_window(Widget):
         elif self.ids.wyswietlacz.text == "Gracz: O":
             self.ids.wyswietlacz.text = "Gracz: X"
 
-    def sprawdzanie(self):
+
+    def end_game(self, gracz):
         global score_O
         global score_X
+        self.ids.temp_ekran.text = "Koniec gry!"
+        self.blokada_przyciskow()
+        if gracz == 'X':
+            score_X += 1
+            final_X = "Gracz: X - " + str(score_X)
+            self.ids.wynik_X.text = final_X
+        elif gracz == 'O':
+            score_O += 1
+            final_O = "Gracz: O - " + str(score_O)
+            self.ids.wynik_O.text = final_O
+
+    def sprawdzanie(self):
         for i in range(3):
             if self.ids[macierz_przyciskow[i][0]].text == self.ids[macierz_przyciskow[i][1]].text and self.ids[macierz_przyciskow[i][1]].text == self.ids[macierz_przyciskow[i][2]].text \
                 and self.ids[macierz_przyciskow[i][0]].text != " ":
-                self.ids.temp_ekran.text = "Koniec gry!"
-                self.blokada_przyciskow()
+
                 if self.ids[macierz_przyciskow[i][0]].text == "X":
-                    score_X += 1
-                    final_X = "Gracz: X - " + str(score_X)
-                    self.ids.wynik_X.text = final_X
+                    self.end_game('X')
                 else:
-                    score_O += 1
-                    final_O = "Gracz: O - " + str(score_O)
-                    self.ids.wynik_O.text = final_O
+                    self.end_game('O')
 
         for i in range(3):
             if self.ids[macierz_przyciskow[0][i]].text == self.ids[macierz_przyciskow[1][i]].text and self.ids[macierz_przyciskow[1][i]].text == self.ids[macierz_przyciskow[2][i]].text \
                 and self.ids[macierz_przyciskow[0][i]].text != " ":
-                self.ids.temp_ekran.text = "Koniec gry!"
-                self.blokada_przyciskow()
                 if self.ids[macierz_przyciskow[0][i]].text == "X":
-                    score_X += 1
-                    final_X = "Gracz: X - " + str(score_X)
-                    self.ids.wynik_X.text = final_X
+                    self.end_game('X')
                 else:
-                    score_O += 1
-                    final_O = "Gracz: O - " + str(score_O)
-                    self.ids.wynik_O.text = final_O
+                    self.end_game('O')
 
         diagonal_1 = [self.ids.pierwszy.text, self.ids.piaty.text, self.ids.dziewiaty.text]
         if diagonal_1[0] == diagonal_1[1] and diagonal_1[1] == diagonal_1[2] and diagonal_1[0] != " ":
-            self.ids.temp_ekran.text = "Koniec gry!"
-            self.blokada_przyciskow()
             if diagonal_1[0] == "X":
-                score_X += 1
-                final_X = "Gracz: X - " + str(score_X)
-                self.ids.wynik_X.text = final_X
+                self.end_game('X')
             else:
-                score_O += 1
-                final_O = "Gracz: O - " + str(score_O)
-                self.ids.wynik_O.text = final_O
+                self.end_game('O')
 
         diagonal_2 = [self.ids.siodmy.text, self.ids.piaty.text, self.ids.trzeci.text]
         if diagonal_2[0] == diagonal_2[1] and diagonal_2[1] == diagonal_2[2] and diagonal_2[0] != " ":
-            self.ids.temp_ekran.text = "Koniec gry!"
-            self.blokada_przyciskow()
             if diagonal_2[0] == "X":
-                score_X += 1
-                final_X = "Gracz: X - " + str(score_X)
-                self.ids.wynik_X.text = final_X
+                self.end_game('X')
             else:
-                score_O += 1
-                final_O = "Gracz: O - " + str(score_O)
-                self.ids.wynik_O.text = final_O
+                self.end_game('O')
 
     def blokada_przyciskow(self):
         for wiersz in macierz_przyciskow:
